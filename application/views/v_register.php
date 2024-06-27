@@ -7,20 +7,7 @@
 <div class="card">
     <div class="card-body register-card-body">
       <p class="login-box-msg">Register pelangan </p>
-	<?php
-	echo validation_errors('<div class="alert alert-warning alert-dismissible">
-	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-	<h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>','</div>') ;
-
-	if ($this->session->flashdata('pesan')){
-		echo '<div class="alert alert-success alert-dismissible">
-		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;
-		</button>
-		<h5><i class ="icon fas fa-check">Sukses</i></h5>';
-		echo $this->session->flashdata('pesan');
-		echo '</div>';
-	}
-	echo form_open('pelanggan/register')?>
+	<?= form_open('pelanggan/register')?>
 	  <label class="text-center">Nama Pelanggan</label> 
         <div class="input-group mb-3">
           <input type="text" name="nama_pelanggan" class="form-control" placeholder="nama pelanggan">
@@ -30,6 +17,7 @@
             </div>
           </div>
         </div>
+        <?= form_error('nama_pelanggan','<p class="text-danger">','</p>'); ?>
 		<label class="text-align-center">Email</label>
         <div class="input-group mb-3">
           <input type="email" name="email"  class="form-control" placeholder="Email">
@@ -39,6 +27,7 @@
             </div>
           </div>
         </div>
+        <?= form_error('email','<p class="text-danger">','</p>'); ?>
 			<label class="text-center">Password</label>
         <div class="input-group mb-3">
           <input type="password" name="password" class="form-control" placeholder="Password">
@@ -48,6 +37,8 @@
             </div>
           </div>
         </div>
+        <?= form_error('password','<p class="text-danger">','</p>'); ?>
+        <label class="text-center">Ulangi Password</label>
         <div class="input-group mb-3">
           <input type="password" name="ulangi_password" class="form-control" placeholder="Retype password">
           <div class="input-group-append">
@@ -56,6 +47,7 @@
             </div>
           </div>
         </div>
+        <?= form_error('ulangi_password','<p class="text-danger">','</p>'); ?>
         <div class="row">
           <div class="col-8">
             
@@ -67,8 +59,6 @@
           <!-- /.col -->
         </div>
       <?php echo form_close() ?>
-
-      
 
       <a href="<?=base_url('pelanggan/login') ?>" class="text-center">Sudah Punya Akun ?</a>
     </div>
