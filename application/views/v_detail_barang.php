@@ -85,7 +85,7 @@ echo form_close();
 <!-- AdminLTE App -->
 <script src="template/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="template/dist/js/demo.js"></script>
+<!-- <script src="template/dist/js/demo.js"></script> -->
 
 <script src="<?=base_url() ?>template/plugins/sweetalert2/sweetalert2.min.js"></script>
 <script>

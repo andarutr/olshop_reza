@@ -24,36 +24,17 @@
   <div class="card">
     <div class="card-body login-card-body">
       <p class="login-box-msg">Silahkan Login</p>
-<?php  echo validation_errors('<div class="alert alert-warning alert-dismissible">
-                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                  <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>','</div>') ;
- 
-if($this->session->flashdata('error')){
-	echo '<div class="alert alert-danger alert-dismissible">
-	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-	<h5><i class="icon fas fa-ban"></i> Alert!</h5>';
-	echo $this->session->flashdata('eror');
-	echo '</div>';
-}
-
-echo form_open('auth/login_user')
-?>
+    <?= form_open('auth/login_user') ?>
 	  <label for="">Username</label>
-        <div class="input-group mb-3">
+        <div class="input-groappendup mb-3">
           <input type="text" name="username" class="form-control" placeholder="Username">
-          <div class="input-group-append">
-            <div class="input-group-text">
-             
-            </div>
-          </div>
+          <?= form_error('username','<p class="text-danger">','</p>'); ?>
         </div>
 		
 		<label for="">Password</label>
         <div class="input-groappendup mb-3">
           <input type="password" name="password" class="form-control" placeholder="Password">
-          <div class="input-group-">
-           
-          </div>
+          <?= form_error('password','<p class="text-danger">','</p>'); ?>
         </div>
         <div class="row">
           <div class="col-8">
@@ -65,7 +46,7 @@ echo form_open('auth/login_user')
           </div>
           <!-- /.col -->
         </div>
-      <?php echo form_close() ?>
+      <?= form_close() ?>
 
       <div class="social-auth-links text-center mb-3">
 	

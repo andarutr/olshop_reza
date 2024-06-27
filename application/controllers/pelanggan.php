@@ -13,45 +13,28 @@ class Pelanggan extends CI_Controller {
 
 	public function register()
 	{
- 		$this->form_validation->set_rules('nama_pelanggan', 'nama_pelanggan', 'required', array(
-			'required' => '%s harus siisi !!!'
-		));
+		$data = array(
+			'title' => 'Register Pelanggan',
+			//'barang' => $this->m_home->get_all_data(),
+			'isi' =>'v_register',
+		);
 
-		$this->form_validation->set_rules('email', 'email', 'required|is_unique[tb_pelanggan.email]', array(
-			'required' => '%s harus siisi !!!',
-			'is_unique' => '%s Sudah Terdaftar..'
-		));
-
-		$this->form_validation->set_rules('password', 'password', 'required', array(
-			'required' => '%s harus siisi !!!'
-		));
-		
-		$this->form_validation->set_rules('ulangi_password', 'ulangi_password', 'required|matches[password]', array(
-			'required' => '%s harus siisi !!!',
-			'matches' => '%s Password tidak sama..'
-		));
-
-		if ($this->form_validation->run() == FALSE) {
-			$data = array(
-				'title' => 'Register Pelanggan',
-				//'barang' => $this->m_home->get_all_data(),
-				'isi' =>'v_register',
-			);
-
-			$this->load->view('layout/v_wrapper_frontend',$data,false);
-		} else {
-			$data = array(
-				'nama_pelanggan' => $this->input->post('nama_pelanggan'),
-				'email' => $this->input->post('email'),
-				'password' => $this->bcrypt->hash($this->input->post('password')),
-			);
-
-			$this->m_pelanggan->register($data);
-			$this->session->set_flashdata('pesan', 'Register Berhasil');
-			redirect('pelanggan/register');
-		}		
+		$this->load->view('layout/v_wrapper_frontend',$data,false);
 	}
 
+	public function register_backend()
+	{
+		$data = array(
+			'nama_pelanggan' => $this->input->post('nama_pelanggan'),
+			'email' => $this->input->post('email'),
+			'password' => $this->bcrypt->hash($this->input->post('password')),
+			'foto' => 'foto.jpg'
+		);
+
+		$this->m_pelanggan->register($data);
+		$this->session->set_flashdata('pesan', 'Register Berhasil');
+		redirect('pelanggan/register');
+	}
 	public function login()
 	{
 		$this->form_validation->set_rules('email', 'email', 'required', array(

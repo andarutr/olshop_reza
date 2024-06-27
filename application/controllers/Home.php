@@ -17,7 +17,7 @@ class Home extends CI_Controller {
 			'barang' => $this->m_home->get_all_data(),
 			'isi' =>'v_home',
 		);
-	$this->load->view('layout/v_wrapper_frontend',$data,false);
+		$this->load->view('layout/v_wrapper_frontend',$data,false);
 	}
 	public function kategori($id_kategori)
 	{	
