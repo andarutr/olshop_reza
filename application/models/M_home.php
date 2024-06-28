@@ -14,6 +14,17 @@ class M_home extends CI_Model
 		return $this->db->get()->result();
 	}
 
+	public function search_data($keyword)
+	{
+		$this->db->select('*');
+        $this->db->from('tb_barang');
+        $this->db->join('tb_kategori', 'tb_kategori.id_kategori = tb_barang.id_kategori', 'left');
+        $this->db->like('tb_barang.nama_barang', $keyword); 
+        $this->db->order_by('tb_barang.id_barang', 'desc');
+
+        return $this->db->get()->result();
+	}
+
 	public function get_all_data_kategori()
 	{
 		$this->db->select('*');

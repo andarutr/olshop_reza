@@ -1,32 +1,8 @@
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                  <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                  </ol>
-                  <div class="carousel-inner">
-                    <div class="carousel-item active">
-                      <img class="d-block w-100" src="https://wallpapercave.com/wp/wp3537553.jpg"width="300px" height="400px">
-                    </div>
-                  </div>
-                  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-custom-icon" aria-hidden="true">
-                      <i class="fas fa-chevron-left"></i>
-                    </span>
-                    <span class="sr-only">Previous</span>
-                  </a>
-                  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-custom-icon" aria-hidden="true">
-                      <i class="fas fa-chevron-right"></i>
-                    </span>
-                    <span class="sr-only">Next</span>
-                  </a>
-                </div>
-              
 <div class="card card-solid">
         <div class="card-body pb-0">
+          <a href="<?= base_url('home') ?>" class="btn btn-primary btn-sm mb-3">> Kembali</a>
           <form action="<?= base_url('home/search'); ?>" method="post" id="form-pencarian">
-              <div class="row justify-content-end mb-3">
+              <div class="row mb-3">
                   <div class="col-md-2">
                       <input type="text" class="form-control" id="search_input" name="search_input">
                   </div>
@@ -35,6 +11,7 @@
                   </div>
               </div>
           </form>
+          <p>Anda sedang mencari : <?= $keyword ?></p>
           <div class="row">
 <?php foreach ($barang as $key =>$value){?>	
 		  <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">

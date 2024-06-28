@@ -19,6 +19,20 @@ class Home extends CI_Controller {
 		);
 		$this->load->view('layout/v_wrapper_frontend',$data,false);
 	}
+
+	public function search(){
+		$keyword = $this->input->post('search_input');
+
+        $data = array(
+			'title' => 'Home',
+			'barang' => $this->m_home->search_data($keyword),
+			'isi' =>'v_home_search',
+			'keyword' => $keyword
+		);
+
+		$this->load->view('layout/v_wrapper_frontend',$data,false);
+	}
+
 	public function kategori($id_kategori)
 	{	
 		$kategori = $this->m_home->kategori($id_kategori);
