@@ -54,25 +54,25 @@ public function update()
 	$this->session->set_flashdata('Pesan', 'Berhasil DiUpdate');
 	redirect('belanja');
 }
-public function clear()
-{
-$this->cart->destroy($rowid);
-redirect('belanja');
-}
-public function checkout()
-{
-	$this->pelanggan_login->proteksi_halaman();
-	$this->form_validation->set_rules('nama_penerima', 'nama_penerima', 'required', array(
-		'required' => '%s Harus Diisi !!!'
-	));
-	if ($this->form_validation->run() == FALSE) {
+	public function clear()
+	{
+		$this->cart->destroy($rowid);
+		redirect('belanja');
+	}
+
+	public function checkout()
+	{
+		$this->pelanggan_login->proteksi_halaman();
+		
 		$data = array(
 			'title' => 'Cek Out Belanja',
 			'isi' => 'v_checkout',
 		);
+
 		$this->load->view('layout/v_wrapper_frontend', $data, FALSE);
-	} else {
-		//simpan ke tabel transaksi
+	}
+
+	public function checkout_backend(){
 		$data = array(
 			'id_pelanggan' =>$this->session->userdata('id_pelanggan'),
 			'no_order' => $this->input->post('no_order'),
@@ -89,24 +89,34 @@ public function checkout()
 			'status_bayar' => '0',
 			'status_order' => '0',
 		);
-	$this->m_transaksi->simpan_transaksi($data);$i = 1;
-	foreach ($this->cart->contents() as $item) {
-		$data_rinci = array(
-			'no_order' => $this->input->post('no_order'),
-			'id_barang' => $item['id'],
-			'qty' => $this->input->post('qty' . $i++),
-			'nama_barang' => $item['name'],
-		);
-		$this->m_transaksi->simpan_rinci_transaksi($data_rinci);
+
+		$this->m_transaksi->simpan_transaksi($data);$i = 1;
+		// foreach ($this->cart->contents() as $item) {
+		// 	$data_rinci = array(
+		// 		'no_order' => $this->input->post('no_order'),
+		// 		'id_barang' => $item['id'],
+		// 		'qty' => $this->input->post('qty' . $i++),
+		// 		'nama_barang' => $item['name'],
+		// 	);
+		// 	$this->m_transaksi->simpan_rinci_transaksi($data_rinci);
+		// }
+
+	 	$qtyArray = $this->input->post('qty');
+	    $i = 0;
+	    foreach ($this->cart->contents() as $item) {
+	        $data_rinci = array(
+	            'no_order' => $data['no_order'],
+	            'id_barang' => $item['id'],
+	            'qty' => $qtyArray[$i], // Ambil nilai qty sesuai dengan index $i
+	            'nama_barang' => $item['name'],
+	        );
+	        $this->m_transaksi->simpan_rinci_transaksi($data_rinci);
+	        $i++;
+	    }
+
+		$this->session->set_flashdata('pesan', 'Pesanan Berhasil Di Proses !!!');
+		$this->cart->destroy();
+		redirect('pesanan_saya');
 	}
 
-	//=========================================
-	$this->session->set_flashdata('pesan', 'Pesanan Berhasil Di Proses !!!');
-	$this->cart->destroy();
-	redirect('pesanan_saya');
-	
-	
-}
-
-}
 }
