@@ -105,6 +105,7 @@ public function update()
 	    $i = 0;
 	    foreach ($this->cart->contents() as $item) {
 	        $data_rinci = array(
+				'id_pelanggan' =>$this->session->userdata('id_pelanggan'),
 	            'no_order' => $data['no_order'],
 	            'id_barang' => $item['id'],
 	            'qty' => $qtyArray[$i], // Ambil nilai qty sesuai dengan index $i
