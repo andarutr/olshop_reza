@@ -1,10 +1,9 @@
 <div class="row">
-	<div class="col-sm-4"></div>
-	<div class="col-sm-4">
+	<div class="col-sm-4 mx-auto mt-5">
 		<div class="register-box">
 			<div class="register-logo">
 			</div>
-			<div class="card">
+			<div class="card shadow">
 				<div class="card-body register-card-body">
 					<p class="login-box-msg">Login pelangan </p>
 					<?= form_open('pelanggan/login') ?>
@@ -52,7 +51,6 @@
 			</div><!-- /.card -->
 		</div>
 	</div>
-	<div class="col-sm-4"></div>
 </div>
 
 <script>

@@ -5,15 +5,13 @@
             <div class="col-12 col-sm-6">
               <h3 class="d-inline-block d-sm-none">LOWA Men’s Renegade GTX Mid Hiking Boots Review</h3>
               <div class="col-12">
-                <img src="<?=base_url('assets/gambar/' .$barang->gambar) ?>" class="product-image" alt="Product Image" width="150">
+                <img src="<?=base_url('assets/gambar/' .$barang->gambar) ?>" class="product-image" alt="Product Image" width="540">
               </div>
               <div class="col-12 product-image-thumbs">
                 <div class="product-image-thumb active"><img src="<?=base_url('assets/gambar/' .$barang->gambar) ?>" alt="Product Image" width="150"></div>
-				<?php foreach ($gambar as $key => $value) {?>
-					<div class="product-image-thumb" ><img src="<?=base_url('assets/gambarbarang/' .$value->gambar) ?>" alt="Product Image" width="150"></div>
-				<?php } ?>
-                
-              
+                <?php foreach ($gambar as $key => $value) {?>
+                  <div class="product-image-thumb mt-3" ><img src="<?=base_url('assets/gambarbarang/' .$value->gambar) ?>" alt="Product Image" width="80"></div>
+                <?php } ?>
               </div>
             </div>
             <div class="col-12 col-sm-6">
@@ -26,35 +24,35 @@
 			 </p>
               <hr>
 
-              <div class="bg-gray py-2 px-3 mt-4">
-                <h2 class="mb-0">
+              <div class="bg-secondary py-2 px-3 mt-4">
+                <h2 class="mb-0" style="font-weight: bold;">
                   Rp. <?= number_format($barang->harga ,0)  ?>
                 </h2>
               </div>
 <hr>
 <?php
-echo form_open('belanja/add');
-echo form_hidden('id',$barang->id_barang);
-echo form_hidden('price',$barang->harga);
-echo form_hidden('name',$barang->nama_barang);
-echo form_hidden('redirect_page',str_replace('index.php/', '',current_url()));
+// echo form_open('belanja/add');
+// echo form_hidden('id',$barang->id_barang);
+// echo form_hidden('price',$barang->harga);
+// echo form_hidden('name',$barang->nama_barang);
+// echo form_hidden('redirect_page',str_replace('index.php/', '',current_url()));
 
 ?>
               <div class="mt-4"> 
                 <div class="row">
 									<div class="col-sm-2">
-									<input type="number" name="qty" class="form-control" value="1" min="1" >
+									<input type="number" name="qty" class="form-control" value="1" min="1" id="qtyForm">
 									</div>
 									<div class="col-sm-8">
-									<button type="submit" class="btn btn-primary btn-flat swalDefaultSuccess">
-                  <i class="fas fa-cart-plus fa-lg mr-2"></i>
+									<button type="submit" class="btn btn-primary btn-flat" id="btnAddToCart" data-id="<?= $barang->id_barang ?>" data-price="<?= $barang->harga ?>" data-name="<?= $barang->nama_barang ?>">
+                  <i class="bi bi-cart-fill mr-2"></i>
                   Add to Cart
 								</button>
 									</div>
 								</div>
               </div>
 <?php 
-echo form_close();
+// echo form_close();
 ?>
 	 <!--
               <div class="mt-4 product-share">
@@ -79,39 +77,36 @@ echo form_close();
         <!-- /.card-body -->
       </div>
       <!-- /.card -->
-	  <script src="template/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="template/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- AdminLTE App -->
-<script src="template/dist/js/adminlte.min.js"></script>
+<!-- <script src="template/dist/js/adminlte.min.js"></script> -->
 <!-- AdminLTE for demo purposes -->
 <!-- <script src="template/dist/js/demo.js"></script> -->
 
 <script src="<?=base_url() ?>template/plugins/sweetalert2/sweetalert2.min.js"></script>
 <script>
-  $(document).ready(function() {
-    $('.product-image-thumb').on('click', function () {
-      var $image_element = $(this).find('img')
-      $('.product-image').prop('src', $image_element.attr('src'))
-      $('.product-image-thumb.active').removeClass('active')
-      $(this).addClass('active')
-    })
-  })
-</script>
-<script>
-  $(function() {
-    var Toast = Swal.mixin({
-      toast: true,
-      position: 'top-end',
-      showConfirmButton: false,
-      timer: 3000
-    });
+  $(document).on("click", "#btnAddToCart", function(){
+    let id = $(this).data("id");
+    let qty = $("#qtyForm").val();
+    let price = $(this).data("price");
+    let name = $(this).data("name");
+    let url = "<?= site_url('belanja/add'); ?>";
+    let redirect_page = "<?= site_url('home'); ?>";
 
-    $('.swalDefaultSuccess').click(function() {
-      Toast.fire({
-        icon: 'success',
-        title: 'Berhasil Ditambahkan ke keranjang.'
-      })
+    $.post(url, {
+      id,
+      qty,
+      price,
+      name,
+      redirect_page
+    }).done(function(){
+      Swal.fire("success","Berhasil memasukan ke keranjang", "success");
+      setTimeout(() => {
+        window.location.reload();
+      }, 1500);
     });
-		});
-	</script>
+  });
+</script>
