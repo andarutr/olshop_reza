@@ -34,6 +34,8 @@
           </div>
         </div>
 
+        <?php if ($this->session->userdata('email') == "") { ?>
+        <?php } else { ?>
 				<div class="col-lg-3 col-md-6">
           <h4>Komentar</h4>
           <div class="social-links d-flex">
@@ -68,7 +70,7 @@
 						<?=form_close() ?>
           </div>
         </div>
-
+        <?php } ?>
       </div>
     </div> 
     <div class="copyright text-center">
