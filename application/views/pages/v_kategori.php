@@ -30,11 +30,11 @@
 								Rp. <?= number_format($value->harga ,0)?>
 								</p>
 								<a href="<?=base_url('home/detail_barang/' .$value->id_barang) ?>" class="btn btn-sm btn-success">
-									<i class="fas fa-cart-plus"><i class="bi bi-eye-fill"></i> Lihat</i>
+									<i class="bi bi-eye-fill"></i> Lihat
 								</a>
 								<button type="submit" class="btn btn-sm btn-primary btnAddToCart" data-id="<?= $value->id_barang ?>"
 									data-qty="1" data-price="<?= $value->harga ?>" data-name="<?= $value->nama_barang ?>">
-									<i class="fas fa-cart-plus"><i class="bi bi-cart-fill"></i> Add To Cart</i>
+									<i class="fas fa-cart-plus"></i> Add To Cart
 								</button>
 							</div>
 						</div>

@@ -1,13 +1,13 @@
 </main>
   <footer id="footer" class="footer dark-background">
-    <!-- <div class="container">
+     <div class="container">
       <div class="row gy-3">
         <div class="col-lg-3 col-md-6 d-flex">
           <i class="bi bi-geo-alt icon"></i>
           <div class="address">
             <h4>Address</h4>
-            <p>A108 Adam Street</p>
-            <p>New York, NY 535022</p>
+            <P>Gd.Graha Krama Yudha Lt 4 Unit B</P>
+					<P>Jalan warung Jati Barat No.04</P>
             <p></p>
           </div>
         </div>
@@ -17,22 +17,12 @@
           <div>
             <h4>Contact</h4>
             <p>
-              <strong>Phone:</strong> <span>+1 5589 55488 55</span><br>
-              <strong>Email:</strong> <span>info@example.com</span><br>
+              <strong>Phone:</strong> <span>021-7945301-0821-2730-3931</span><br>
+              <strong>Email:</strong> <span>cvbms@gmail.com</span><br>
             </p>
           </div>
         </div>
 
-        <div class="col-lg-3 col-md-6 d-flex">
-          <i class="bi bi-clock icon"></i>
-          <div>
-            <h4>Opening Hours</h4>
-            <p>
-              <strong>Mon-Sat:</strong> <span>11AM - 23PM</span><br>
-              <strong>Sunday</strong>: <span>Closed</span>
-            </p>
-          </div>
-        </div>
 
         <div class="col-lg-3 col-md-6">
           <h4>Follow Us</h4>
@@ -44,8 +34,43 @@
           </div>
         </div>
 
+				<div class="col-lg-3 col-md-6">
+          <h4>Komentar</h4>
+          <div class="social-links d-flex">
+					<table>
+					<tr>
+						<td><h4>email</h4></td>
+						<td> :</td>
+						<td><input type="email" id="email" class="form-control" placeholder="masukan email"></td>
+					</tr>
+					<tr>
+						<td><h4>suject</h4></td>
+						<td> :</td>
+						<td><input type="text" id="subject" class="form-control" placeholder="masukan email"></td>
+					</tr>
+					<tr>
+						<td><h4>pesan</h4></td>
+						<td> :</td>
+						<td>	<textarea id="pesan" cols="45" class="form-control" rows="4"></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td>
+              <button class="btn btn-success" onClick="sendEmail()">submit</button>
+            </td>
+					</tr>
+
+
+					</table>
+
+						<?=form_close() ?>
+          </div>
+        </div>
+
       </div>
-    </div> -->
+    </div> 
     <div class="copyright text-center">
       <p>© <span>Copyright</span> <strong class="px-1 sitename">Toko CV.BMS</strong> <span>All Rights Reserved</span></p>
     </div>
@@ -63,5 +88,21 @@
   <script src="<?= base_url() ?>assets/toko_online/js/main.js"></script>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    function sendEmail(){
+      let email = $("#email").val();
+      let subject = $("#subject").val();
+      let pesan = $("#pesan").val();
+
+      let url = "<?= site_url('home/sendTo') ?>"
+      $.post(url, {
+        email: email,
+        subject: subject,
+        pesan: pesan,
+      }).done(function(){
+        Swal.fire("success","Email sedang dikirim!", "success");
+      })
+    }
+  </script>
 </body>
 </html>

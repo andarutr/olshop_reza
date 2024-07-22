@@ -15,6 +15,7 @@ class Barang extends CI_Controller {
 	// List all your items
 	public function index()
 	{
+		$this->user_login->proteksi_halaman();
 						
 		$data = array(
 			'title' => 'Produk',

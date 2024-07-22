@@ -32,8 +32,13 @@ class User extends CI_Controller {
 			'level_user'=> $this->input->post('level_user'),
 		);
 		$this->m_user->add($data);
-		
-		$this->session->set_flashdata('pesan', 'Data Berhasil Ditambahkan');
+		if ($data) {
+            // Berhasil menambahkan data
+            $this->session->set_flashdata('message', 'Data berhasil ditambahkan.');
+        } else {
+            // Gagal menambahkan data
+            $this->session->set_flashdata('message', 'Gagal menambahkan data.');
+        }
 		redirect('user');
 	}
 

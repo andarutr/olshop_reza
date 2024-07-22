@@ -11,7 +11,8 @@ class Kategori extends CI_Controller {
 
 	// List all your items
 	public function index(  )
-	{
+	{	
+		$this->user_login->proteksi_halaman();
 			$data = array(
 				'title' => 'Kategori',
 				'kategori' => $this->m_kategori->get_all_data(),

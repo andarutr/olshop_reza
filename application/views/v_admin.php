@@ -3,7 +3,7 @@
      <!-- small box -->
 	         <div class="small-box bg-info">
               <div class="inner">
-                <h3>6</h3>
+                <h3><?= $total_transaksi?></h3>
 
                 <p>Pesanan Masuk</p>
               </div>
@@ -35,7 +35,7 @@
      <!-- small box -->
 	         <div class="small-box bg-danger">
               <div class="inner">
-                <h3>7</h3>
+                <h3><?=$total_pelanggan ?></h3>
 
                 <p>Pelanggan</p>
               </div>

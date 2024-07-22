@@ -16,17 +16,14 @@ class Belanja extends CI_Controller {
 		}
 			$data = array(
 				'title' => 'Keranjang Belanja',
-				'barang' => $this->m_home->get_all_data(),
-				// 'isi' =>'v_belanja',
+				//'barang' => $this->m_home->get_all_data(),
+				'isi' =>'v_belanja',
 			);
-		// $this->load->view('layout/v_wrapper_frontend',$data,false);
-		$this->load->view('layout/master_header', $data);
-		$this->load->view('pages/v_belanja', $data);
-		$this->load->view('layout/master_footer');
+		$this->load->view('layout/v_wrapper_frontend',$data,false);
 	}
 
 public function add(){
-	// $redirect_page = $this->input->post('redirect_page');
+	$redirect_page = $this->input->post('redirect_page');
 	$data = array(
         'id'      => $this->input->post('id'),
         'qty'     => $this->input->post('qty'),
@@ -34,7 +31,7 @@ public function add(){
         'name'    => $this->input->post('name'),
 );
 $this->cart->insert($data);
-// redirect($redirect_page, 'refresh');
+redirect($redirect_page, 'refresh');
 }
 
 public function delete($rowid)
@@ -69,13 +66,10 @@ public function update()
 		
 		$data = array(
 			'title' => 'Cek Out Belanja',
-			// 'isi' => 'v_checkout',
+			'isi' => 'v_checkout',
 		);
 
-		// $this->load->view('layout/v_wrapper_frontend', $data, FALSE);
-		$this->load->view('layout/master_header', $data);
-		$this->load->view('pages/v_checkout', $data);
-		$this->load->view('layout/master_footer');
+		$this->load->view('layout/v_wrapper_frontend', $data, FALSE);
 	}
 
 	public function checkout_backend(){

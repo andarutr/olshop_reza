@@ -13,17 +13,13 @@ class Pelanggan extends CI_Controller {
 
 	public function register()
 	{
-		// $data = array(
-		// 	'title' => 'Register Pelanggan',
-		// 	//'barang' => $this->m_home->get_all_data(),
-		// 	'isi' =>'v_register',
-		// );
+		$data = array(
+			'title' => 'Register Pelanggan',
+			//'barang' => $this->m_home->get_all_data(),
+			'isi' =>'v_register',
+		);
 
-		// $this->load->view('layout/v_wrapper_frontend',$data,false);
-		$this->load->view('layout/v_head');
-		$this->load->view('layout/v_header_frontend');
-		// $this->load->view('layout/v_nav_frontend', $data);
-		$this->load->view('v_register');
+		$this->load->view('layout/v_wrapper_frontend',$data,false);
 	}
 
 	public function register_backend()
@@ -49,19 +45,13 @@ class Pelanggan extends CI_Controller {
 		));
 		
 		if ($this->form_validation->run() ==  FALSE) {
-			// $data = array(
-			// 	'title' => 'Login pelanggan',
-			// 	//'kategori' => $this->m_kategori->get_all_data(),
-			// 	'isi' => 'v_login_pelanggan',
-			// );
-			$data['title'] = 'Login Pelanggan';
-
-			$this->load->view('layout/v_head');
-			$this->load->view('layout/v_header_frontend');
-			// $this->load->view('layout/v_nav_frontend', $data);
-			$this->load->view('v_login_pelanggan');
-			// $this->load->view('layout/v_footer_frontend');
-			// $this->load->view('layout/v_wrapper_frontend',$data,false);
+			$data = array(
+				'title' => 'Login pelanggan',
+				//'kategori' => $this->m_kategori->get_all_data(),
+				'isi' => 'v_login_pelanggan',
+			);
+			
+			$this->load->view('layout/v_wrapper_frontend',$data,false);
 		}else{
 			$email = $this->input->post('email');
 			$password = $this->input->post('password');
@@ -72,15 +62,4 @@ class Pelanggan extends CI_Controller {
 		$this->pelanggan_login->logout();
 	}
 
-	public function akun (){
-		$this->pelanggan_login->proteksi_halaman();
-		$data = array(
-			'title' => 'Akun',
-			//'kategori' => $this->m_kategori->get_all_data(),
-			'isi' => 'v_akun_saya',
-		);
-		
-		$this->load->view('layout/v_wrapper_frontend',$data,false);
-	
 	}
-}

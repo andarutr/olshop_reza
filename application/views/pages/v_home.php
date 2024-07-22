@@ -3,10 +3,12 @@
 		<div class="row gy-4 justify-content-center justify-content-lg-between">
 			<div class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center">
 				<h1 data-aos="fade-up">Belanja Mudah <br>Hanya Disini...</h1>
-				<p data-aos="fade-up" data-aos-delay="100">Kurang dari 48 jam pesanan anda sudah sampai tujuan.</p>
+				<p data-aos="fade-up" data-aos-delay="100"><marquee behavior="" direction="">Kurang dari 48 jam pesanan anda sudah sampai tujuan.
+					Free ongkir min belnaja 100rb
+				</marquee></p>
 			</div>
 			<div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out">
-				<img src="<?= base_url() ?>assets/toko_online/img/hero-img.png" class="img-fluid animated" alt="">
+				<img src="<?= base_url() ?>assets/toko_online/img/sayuran.png" class="img-fluid animated" alt="">
 			</div>
 		</div>
 	</div>
@@ -42,12 +44,11 @@
 								<p class="price">
 								Rp. <?= number_format($value->harga ,0)?>
 								</p>
-								<a href="<?=base_url('home/detail_barang/' .$value->id_barang) ?>" class="btn btn-sm btn-success">
-									<i class="fas fa-cart-plus"><i class="bi bi-eye-fill"></i> Lihat</i>
+								<a href="<?=base_url('home/detail_barang/' .$value->id_barang) ?>" class="btn btn-sm btn-success"><i class="bi bi-eye-fill"></i> Lihat</i>
 								</a>
 								<button type="submit" class="btn btn-sm btn-primary btnAddToCart" data-id="<?= $value->id_barang ?>"
 									data-qty="1" data-price="<?= $value->harga ?>" data-name="<?= $value->nama_barang ?>">
-									<i class="fas fa-cart-plus"><i class="bi bi-cart-fill"></i> Add To Cart</i>
+									<i class="bi bi-cart-fill"></i> Add To Cart</i>
 								</button>
 							</div>
 						</div>

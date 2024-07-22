@@ -5,12 +5,12 @@
             <div class="col-12 col-sm-6">
               <h3 class="d-inline-block d-sm-none">LOWA Men’s Renegade GTX Mid Hiking Boots Review</h3>
               <div class="col-12">
-                <img src="<?=base_url('assets/gambar/' .$barang->gambar) ?>" class="product-image" alt="Product Image" width="150">
+                <img src="<?=base_url('assets/gambar/' .$barang->gambar) ?>" class="product-image" alt="Product Image">
               </div>
               <div class="col-12 product-image-thumbs">
-                <div class="product-image-thumb active"><img src="<?=base_url('assets/gambar/' .$barang->gambar) ?>" alt="Product Image" width="150"></div>
+                <div class="product-image-thumb active"><img src="<?=base_url('assets/gambar/' .$barang->gambar) ?>" alt="Product Image"></div>
 				<?php foreach ($gambar as $key => $value) {?>
-					<div class="product-image-thumb" ><img src="<?=base_url('assets/gambarbarang/' .$value->gambar) ?>" alt="Product Image" width="150"></div>
+					<div class="product-image-thumb" ><img src="<?=base_url('assets/gambarbarang/' .$value->gambar) ?>" alt="Product Image"></div>
 				<?php } ?>
                 
               

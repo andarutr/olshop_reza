@@ -40,8 +40,8 @@
 										<div class="col-sm-4">
                       <!-- text input -->
                       <div class="form-group">
-                        <label>Berat (Kg)</label>
-                        <input name="berat" type="number" min = "0" class="form-control" placeholder="berat dalam satuan Kg"  value="<?=set_value('berat') ?>" required>
+                        <label>Berat (Gram)</label>
+                        <input name="berat" type="number" min = "200" class="form-control" placeholder="berat dalam satuan gram  value="<?=set_value('berat') ?>" required>
                       </div>
                     </div>	  	
 				  </div>	

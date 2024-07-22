@@ -8,9 +8,9 @@
                 <img src="<?=base_url('assets/gambar/' .$barang->gambar) ?>" class="product-image" alt="Product Image" width="540">
               </div>
               <div class="col-12 product-image-thumbs">
-                <div class="product-image-thumb active"><img src="<?=base_url('assets/gambar/' .$barang->gambar) ?>" alt="Product Image" width="150"></div>
+                <div class="product-image-thumb active"><img src="<?=base_url('assets/gambar/' .$barang->gambar) ?>" alt="Product Image" width="300px" height="100"></div>
                 <?php foreach ($gambar as $key => $value) {?>
-                  <div class="product-image-thumb mt-3" ><img src="<?=base_url('assets/gambarbarang/' .$value->gambar) ?>" alt="Product Image" width="80"></div>
+                  <div class="product-image-thumb mt-3" ><img src="<?=base_url('assets/gambarbarang/' .$value->gambar) ?>" alt="Product Image" width="300px" height="100"></div>
                 <?php } ?>
               </div>
             </div>
@@ -75,18 +75,33 @@
 		</div>
         </div>
         <!-- /.card-body -->
-      </div>
+      
       <!-- /.card -->
 
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- AdminLTE App -->
-<!-- <script src="template/dist/js/adminlte.min.js"></script> -->
+<script src="template/dist/js/adminlte.min.js"></script> 
 <!-- AdminLTE for demo purposes -->
-<!-- <script src="template/dist/js/demo.js"></script> -->
+<script src="template/dist/js/demo.js"></script>
 
 <script src="<?=base_url() ?>template/plugins/sweetalert2/sweetalert2.min.js"></script>
+
+
+<script src="<?=base_url() ?>template/plugins/sweetalert2/sweetalert2.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('.product-image-thumb').on('click', function () {
+      var $image_element = $(this).find('img')
+      $('.product-image').prop('src', $image_element.attr('src'))
+      $('.product-image-thumb.active').removeClass('active')
+      $(this).addClass('active')
+    })
+  })
+</script>
+
+
 <script>
   $(document).on("click", "#btnAddToCart", function(){
     let id = $(this).data("id");

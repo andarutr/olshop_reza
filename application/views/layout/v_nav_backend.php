@@ -84,6 +84,14 @@
               </p>
             </a>
           </li>
+					<li class="nav-item">
+            <a href="<?= base_url('Rekening') ?>" class="nav-link">
+              <i class="nav-icon fas  fa-th"></i>
+              <p>
+                Informasi Rekening	
+              </p>
+            </a>
+          </li>
 		  <li class="nav-item">
             <a href="<?= base_url('user')?>" class="nav-link"<?php if (
 						$this->uri->segment(1) =='user'
