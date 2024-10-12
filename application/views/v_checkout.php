@@ -258,8 +258,8 @@ $tot_berat = 0;
 
 		let url = "<?= site_url('belanja/checkout_backend') ?>"
 		$.post(url, {
-			no_order: new Date().toISOString().slice(0, 10).replace(/-/g, '') + Math.random().toString(36).substr(2, 8).toUpperCase(),
-			nama_penerima: namaPenerima,
+				no_order: new Date().toISOString().slice(0, 10).replace(/-/g, '') + Math.random().toString(36).substr(2, 8).toUpperCase(),
+				nama_penerima: namaPenerima,
 			hp_penerima: hpPenerima,
 			kota: pilihEkspedisi,
 			alamat: alamat,
@@ -277,4 +277,5 @@ $tot_berat = 0;
 			}, 2000);
 		})
   });
+  
 </script>

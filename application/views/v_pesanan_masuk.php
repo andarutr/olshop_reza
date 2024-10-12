@@ -65,12 +65,133 @@
 											<button class="btn btn-sm  btn-success" data-toggle="modal" data-target="#cek<?= $value->id_transaksi ?>">Cek Pembayaran</button>
 											<a href="<?= base_url('admin/proses/'. $value->id_transaksi) ?>" class="btn btn-sm btn-flat btn-primary">proses pesanan</a>
 										<?php } ?>
-										,</td>
+										</td>
 								</tr>
 							<?php } ?>
 
 						</table>
 					</div>
+					<div class="tab-pane fade" id="custom-tabs-four-profile" role="tabpanel" aria-labelledby="custom-tabs-four-profile-tab">
+						<!-- data pesanan diproses -->
+						<table class="table">
+							<tr>
+								<th>No Order</th>
+								<th>Nama</th>
+								<th>Alamat</th>
+								<th>Tanggal</th>
+								<th>Expedisi</th>
+								<th>Total Bayar</th>
+								<th>Action</th>
+							</tr>
+							<?php foreach ($pesanan_diproses as $key => $value) { ?>
+								<tr>
+									<td><?= $value->no_order ?></td>
+									<td><?= $value->nama_penerima ?></td>
+									<td><?= $value->alamat ?></td>
+									<td><?= $value->tgl_order ?></td>
+									<td>
+										<b><?= $value->expedisi ?></b><br>
+										Kota : <?= $value->kota ?><br>
+										Ongkir : <?= number_format($value->ongkir, 0) ?>
+									</td>
+									<td>
+										<b>Rp.<?= number_format($value->total_bayar, 0) ?></b><br>
+										<span class="badge badge-success">Terverifikasi</span><br>
+										<span class="badge badge-primary">Diproses/Dikemas</span>
+
+									</td>
+									<td>
+									<?php if($value->status_bayar == 1){?>
+										<button class="btn btn-sm btn-flat btn-primary" data-toggle="modal" data-target="#kirim<?= $value->id_transaksi ?>"><i class="fa fa-paper-plane"></i> Kirim</button>
+									<?php }?>
+									</td>
+								</tr>
+							<?php } ?>
+
+						</table>
+
+					</div>
+					<div class="tab-pane fade" id="custom-tabs-four-messages" role="tabpanel" aria-labelledby="custom-tabs-four-messages-tab">
+					<table class="table">
+						<tr>
+							<th>No Order</th>
+							<th>Nama</th>
+							<th>Alamat</th>
+							<th>Tanggal</th>
+							<th>Expedisi</th>
+							<th>Total Bayar</th>
+							<th>No Wa Pengirim</th>
+							
+						</tr>
+						<?php foreach ($pesanan_dikirim as $key => $value) { ?>
+							<tr>
+								<td><?= $value->no_order ?></td>
+								<td><?= $value->nama_penerima ?></td>
+								<td><?= $value->alamat ?><br>
+									<b>Kota</b> : <?= $value->kota ?><br>
+									
+								</td>
+								<td><?= $value->tgl_order ?></td>
+								<td>
+									<b><?= $value->expedisi ?></b><br>
+									Ongkir : <?= number_format($value->ongkir, 0) ?>
+								</td>
+								<td>
+									<b>Rp.<?= number_format($value->total_bayar, 0) ?></b><br>
+
+									<span class="badge badge-success">Dikirim</span>
+
+								</td>
+								<td>
+									<h4><?= $value->no_hp ?></h4>
+								</td>
+								</tr>
+						<?php } ?>
+
+					</table>
+				</div>
+
+				<div class="tab-pane fade" id="custom-tabs-four-settings" role="tabpanel" aria-labelledby="custom-tabs-four-settings-tab">
+					<table class="table">
+						<tr>
+							<th>No Order</th>	
+							<th>Nama</th>
+							<th>Alamat</th>
+							<th>Tanggal</th>
+							<th>Expedisi</th>
+							<th>Total Bayar</th>
+							<th>No Hp Pwngirim</th>
+							<th>Action</th>
+						</tr>
+						<?php foreach ($pesanan_selesai as $key => $value) { ?>
+							<tr>
+								<td><?= $value->no_order ?></td>
+								<td><?= $value->nama_penerima ?></td>
+								<td><?= $value->alamat ?><br>
+									Kota: <?= $value->kota ?>
+								</td>
+								<td><?= $value->tgl_order ?></td>
+								<td>
+									<b><?= $value->expedisi ?></b><br>
+									Ongkir : <?= number_format($value->ongkir, 0) ?>
+								</td>
+								<td>
+									<b>Rp.<?= number_format($value->total_bayar, 0) ?></b><br>
+
+									<span class="badge badge-success">Diterima/Sampai</span>
+
+								</td>
+								<td>
+									<h4><?= $value->no_hp ?></h4>
+								</td>
+								<td><a href="<?= base_url('admin/detail_pesanan_masuk/' . $value->id_transaksi) ?>" class="btn btn-sm btn-primary btn-flat">Detail</a></td>
+
+							</tr>
+						<?php } ?>
+
+					</table>
+				</div>
+
 				</div>
 			</div>
 		</div>
@@ -82,7 +203,7 @@
 <div class="modal fade" id="cek<?= $value->id_transaksi ?>">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<div class="modal-header">
+			<div class="modal-header">	
 				<h4 class="modal-title"><?= $value->no_order ?></h4>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
@@ -125,3 +246,53 @@
 <!-- /.modal -->
 <?php } ?>
 
+
+<?php foreach ($pesanan_diproses as $key => $value) { ?>
+	<div class="modal fade" id="kirim<?= $value->id_transaksi ?>">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title"><?= $value->no_order ?></h4>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+
+					<?php echo form_open('admin/kirim/' . $value->id_transaksi) ?>
+					<table class="table">
+						<tr>
+							<th>Expedisi</th>
+							<th>:</th>
+							<th><?= $value->expedisi ?></th>
+						</tr>
+						<tr>
+							<th>Kota</th>
+							<th>:</th>
+							<th><?= $value->kota ?></th>
+						</tr>
+						<tr>
+							<th>Ongkir</th>
+							<th>:</th>
+							<th>Rp.<?= number_format($value->ongkir, 0) ?></th>
+						</tr>
+						<tr>
+							<th>No Resi</th>
+							<th>:</th>
+							<th><input name="no_hp" class="form-control" placeholder="No Pengirim" required></th>
+						</tr>
+					</table>
+
+				</div>
+				<div class="modal-footer justify-content-between">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary">Kirim</button>
+				</div>
+				<?php echo form_close() ?>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+<?php } ?>

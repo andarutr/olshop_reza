@@ -8,17 +8,11 @@
 				</div>
                 <!-- /.card-tools -->
               </div>
-
-			   <?php
-if ($this->session->set_flashdata('pesan')) {
-	echo '<div class="alert alert-success alert-dismissible">
-	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-	<h5><i class="icon fas fa-check"></i> Alert!</h5>';
-	$this->session->set_flashdata('pesan');
-	echo '</div>';
-}
-
-?> 
+			  <?php if ($this->session->flashdata('message')): ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <?php echo $this->session->flashdata('message'); ?>
+        </div>
+    <?php endif; ?>
 				<table id="example1" class="table table-bordered table-striped">
 					<thead class="text-center">
 						<tr>	
@@ -189,3 +183,11 @@ if ($this->session->set_flashdata('pesan')) {
 		</div>
 	</div>
 <?php }?>
+<script>
+        $(document).ready(function() {
+            setTimeout(function() {
+                $('.alert').alert('close');
+            }, 2000); // Waktu dalam milidetik (3000 = 3 detik)
+        });
+    </script>
+

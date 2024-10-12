@@ -3,14 +3,14 @@
      <!-- small box -->
 	         <div class="small-box bg-info">
               <div class="inner">
-                <h3>6</h3>
+                <h3><?= $total_transaksi?></h3>
 
-                <p>Pesanan Masuk</p>
+                <p>Pesanan</p>
               </div>
               <div class="icon">
                 <i class="fas fa-envelope"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="<?=base_url('admin/pesanan_masuk') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
 
@@ -35,14 +35,14 @@
      <!-- small box -->
 	         <div class="small-box bg-danger">
               <div class="inner">
-                <h3>7</h3>
+                <h3><?=$total_pelanggan ?></h3>
 
                 <p>Pelanggan</p>
               </div>
               <div class="icon">
                 <i class="fas fa-users"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="<?=base_url('pelanggan') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
 

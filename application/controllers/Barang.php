@@ -15,6 +15,7 @@ class Barang extends CI_Controller {
 	// List all your items
 	public function index()
 	{
+		$this->user_login->proteksi_halaman();
 						
 		$data = array(
 			'title' => 'Produk',
@@ -72,6 +73,14 @@ class Barang extends CI_Controller {
 				);
 				$this->m_barang->add($data);
 				$this->session->set_flashdata('Pesan', 'Berhail ditambahkan');
+
+				if ($data) {
+					// Berhasil menambahkan data
+					$this->session->set_flashdata('message', 'Data berhasil ditambahkan.');
+				} else {
+					// Gagal menambahkan data
+					$this->session->set_flashdata('message', 'Gagal menambahkan data.');
+				}
 				redirect('barang');
 				
 			}

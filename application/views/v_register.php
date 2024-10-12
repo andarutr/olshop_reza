@@ -44,7 +44,7 @@
 						</div>
 						<!-- /.col -->
 						<div class="col-4">
-							<button type="submit" class="btn btn-primary btn-block" id="btnSubmitRegister">Register</button>
+							<button type="submit" class="btn btn-primary btn-block" id="btnSubmitRegister">Register akun</button>
 						</div>
 						<!-- /.col -->
 					</div>
@@ -65,11 +65,11 @@ $(document).on("click", "#btnSubmitRegister", function () {
     let passwordForm = $("#passwordForm").val();
 	
 	if(namaForm == ''){
-		Swal.fire("Form Validation","Nama Harus diisi!", "error");		return;
+		Swal.fire("Form Validation","Nama Harus diisi!", "error");		return;	 
 	}
 
 	if(emailForm == ''){
-		Swal.fire("Form Validation","Email Harus diisi!", "error");
+		Swal.fire("Form Validation","Email Harus diisiii!", "error");
 		return;
 	}
 	

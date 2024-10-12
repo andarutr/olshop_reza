@@ -62,28 +62,43 @@ if ($this->session->set_flashdata('pesan')) {
 				</div>
 				<!-- body modal -->
 				<div class="modal-body">
-					<?php
-					echo form_open('kategori/add');
-					?>
+					
+
 					<div class="form-group">
-                    <label for="exampleInputEmail1">Nama user</label>
-                    <input type="text" name="nama_kategori" class="form-control" placeholder="Nama kategori" required>
+                    <label for="exampleInputEmail1">Nama kategori</label>
+                    <input type="text" id="namaKategori" class="form-control" placeholder="Nama kategori" required>
                   </div>
 				<!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Save</button>
+		<button type="submit" class="btn btn-success float-right" id="btnSubmitCheckout"><i class="far fa-credit-card"></i> submit</button>
+			
                   <a class="btn btn-primary" href="<?=base_url('kategori')  ?>">Cancel</a>
                 </div>
-				<?php
-				echo form_close()
-				?>
-				</div>
+				
+				<div>
 
 			</div>
 		</div>
 	</div>
+		</div>
+ </div>
+ 
+<script>
+	$(document).on("click", "#btnSubmitCheckout", function(){
+  	let namaKategori = $("#namaKategori").val();
+	let url = "<?= site_url('keranjang/add') ?>"
+		$.post(url, {
+			namaKategori: namaKategori
+		}).done(function(){
+			Swal.fire("success","Berhasil melakukan checkout!", "success");
 
+			setTimeout(() => {
+				window.location.href = "<?= site_url('home') ?>"
+			}, 2000);
+		});
+	});
+</script>
 
 	<!--Edit Kategori -->
 <?php foreach ($kategori as $key =>$value) {?>

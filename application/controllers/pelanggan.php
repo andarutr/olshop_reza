@@ -10,6 +10,15 @@ class Pelanggan extends CI_Controller {
 		$this->load->model('m_auth');
 		$this->load->library('bcrypt');
 	}
+	public function index()
+    { 
+        $data = array(
+            'title' => 'data pelanggan',
+			'pelanggan' => $this->m_pelanggan->get_all_data(),
+            'isi' => 'v_pelanggan',
+        );
+        $this->load->view('layout/v_wrapper_backend', $data, FALSE);
+    }
 
 	public function register()
 	{
@@ -62,15 +71,4 @@ class Pelanggan extends CI_Controller {
 		$this->pelanggan_login->logout();
 	}
 
-	public function akun (){
-		$this->pelanggan_login->proteksi_halaman();
-		$data = array(
-			'title' => 'Akun',
-			//'kategori' => $this->m_kategori->get_all_data(),
-			'isi' => 'v_akun_saya',
-		);
-		
-		$this->load->view('layout/v_wrapper_frontend',$data,false);
-	
 	}
-}
